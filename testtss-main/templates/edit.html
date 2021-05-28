@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+login
+{% endblock title %}
+
+{% block content %}
+<div class="col-lg-8 mx-auto p-3 py-md-5">
+<main>
+  <h1>Кто отправил запрос - {{ post.author }}</h1>
+      
+      <img src="{{ post.qr.url }}" class="img-thumbnail" alt="...">
+      
+  <p class="fs-5 col-md-8">{{ post.text }}</p>
+  <p class="fs-5 col-md-8">Местоположение - {{ post.textqr }}</p>
+  <p class="fs-5 col-md-8">Статус - {{ post.year_in_school }}</p>
+  <p class="fs-5 col-md-8">Дата отправки - {{ post.created_date }}</p>
+
+
+  <hr class="col-3 col-md-2 mb-5">
+  <h2>Ответить на обращение</h2>
+  <div class="row g-5">
+    <form method="POST" class="post-form" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <div class="col-7">
+            <label for="address" class="form-label">Ответить на обращение</label>
+            <input type="text" class="form-control" id="address" name='textot' required="">
+            
+          </div>
+          <br>
+          <div class="col-md-5">
+            <label for="country" class="form-label">Изменить статус обращения</label>
+            <select class="form-select" id="country" required="" name='year_in_school'>
+              <option value="">В ОЖИДАНИИ ОТВЕТА</option>
+              <option>РЕШЕНО</option>
+            </select>
+            
+            <br>
+          </div>
+        <button type="submit" class="w-50 btn btn-primary btn-lg">Ответить</button>
+    </form></div>
+  </div>
+</main>
+</div>
+
+{% endblock content %}

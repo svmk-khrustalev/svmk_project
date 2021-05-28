@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+login
+{% endblock title %}
+
+{% block content %}
+<div class="col-lg-8 mx-auto p-3 py-md-5">
+<main>
+  <h1>{{ user.groups.all.0 }}</h1>
+      {% if user.groups.all.0.name == 'manager' %}
+      <h1>YES</h1>
+      {% else %}
+      <h1>Студент</h1>
+      {% endif %}  
+  <p class="fs-5 col-md-8">Отправить QR код и сообщение о проблеме на сайт!</p>
+
+  <div class="mb-5">
+    <a href="add" class="btn btn-primary btn-lg px-4">Отправить</a>
+  </div>
+
+  <hr class="col-3 col-md-2 mb-5">
+  <div class="row g-5">
+  {% for post in posts %}
+  
+    <div class="col-md-6">
+    <h2>Запрос номер {{ post.id }}</h2>
+    <p>Статус запроса - {{post.year_in_school}}</p>
+    <p>Дата отправки - {{ post.created_date }}</p>
+    <ul class="icon-list">
+      <li><a href="{{ post.get_absolute_url }}" rel="noopener" target="_blank">Просмотр</a></li>
+
+    </ul>
+  </div>
+    
+{% endfor %}  
+  </div>
+</main>
+</div>
+
+{% endblock content %}

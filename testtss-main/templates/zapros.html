@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+login
+{% endblock title %}
+
+{% block content %}
+<div class="col-lg-8 mx-auto p-3 py-md-5">
+<main>
+  <h1>Кто отправил запрос - {{ post.author }}</h1>
+      
+      <img src="{{ post.qr.url }}" class="img-thumbnail" alt="...">
+      
+  <p class="fs-5 col-md-8">{{ post.text }}</p>
+  <p class="fs-5 col-md-8">Местоположение - {{ post.textqr }}</p>
+  <p class="fs-5 col-md-8">Статус - {{ post.year_in_school }}</p>
+  <p class="fs-5 col-md-8">Дата отправки - {{ post.created_date }}</p>
+
+
+  <hr class="col-3 col-md-2 mb-5">
+  <div class="row g-5">
+    <div class="col-md-6">
+        <h2>Ответ на обращение</h2>
+        <p>{{ post.textot}}.</p>
+        
+      </div>
+  </div>
+</main>
+</div>
+
+{% endblock content %}
